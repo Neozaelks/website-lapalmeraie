@@ -1,0 +1,90 @@
+nav{
+  padding-left: 10vw !important;
+  padding-right: 10vw !important;
+}
+
+ul li a{
+  margin-left: 1vw !important;
+}
+
+.nav-fixed{
+  transition: 0.25s ease-in-out;
+}
+
+.masthead{
+  height: 100vh;
+  min-height: 500px;
+  background-image: url('../assets/bg-fw_image.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.darkerer{
+  height: 100vh;
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.ca3-scroll-down-link{
+  margin-bottom: -30vh;
+}
+
+.maincontent{
+  margin-top: 5vh
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color:#FA6C2C !important;
+  border-color: #FA6C2C !important;
+}
+.btn-primary:hover{
+  border-color: #000 !important;
+  background-color: #fff !important;
+  color: #000 !important;
+}
+.btn-primary:active {
+  border-color: #000 !important;
+  color: #fff !important;
+  background-color: #FA6C2C !important;
+}
+
+.ctaEndImage{
+  background-image: url(../assets/cta-endimage.png);
+  height: 45vh;
+  background-size: cover;
+}
+.darkererCTA{
+  height: 45vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.darkererCTA div{
+  margin: 0 !important;
+  height: inherit;
+  text-align: center;
+}
+
+.dropdown-divider{
+  border-color: black !important; 
+}
+
+hr{
+  width: 5vw !important;
+  border: 2px solid #FA6C2C !important; 
+}
+
+.noMargin{
+  margin-left: 0 !important;
+  width: 95vw !important;
+}
+
+.inlineLinks{
+  color: #ff8b55 !important;
+}
