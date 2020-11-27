@@ -14,7 +14,7 @@ ul li a{
 .masthead{
   height: 100vh;
   min-height: 500px;
-  background-image: url('../assets/bg-fw_image.png');
+  background-image: url('/static/assets/bg-fw_image.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -53,7 +53,7 @@ ul li a{
 }
 
 .ctaEndImage{
-  background-image: url(../assets/cta-endimage.png);
+  background-image: url('/static/assets/cta-endimage.png');
   height: 45vh;
   background-size: cover;
 }
@@ -92,7 +92,7 @@ hr{
 
 /*REJOINDRE*/
 .headerNousRejoindre{
-  background-image: url(../assets/cta-endimage.png);
+  background-image: url('/static/assets/cta-endimage.png');
   height: 75vh;
   background-size: cover;
 }
