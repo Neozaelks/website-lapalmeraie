@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-muted fixed-top nav-fixed">
+  <a class="navbar-brand" href="#">
+    La Palmeraie 
+  </a>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="collapsingNavbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="/" class="nav-link <% if(currentPage == 'index'){ %>active<% } %>">Accueil</a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="#" class="nav-link <% if(currentPage == 'serveur'){ %>active<% } %>">Le Serveur</a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="#" class="nav-link <% if(currentPage == 'tutoriel'){ %>active<% } %>">Le Tutoriel</a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="#" class="nav-link <% if(currentPage == 'vote'){ %>active<% } %>">Votez !</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="btn btn-outline-light mb-2 mb-lg-0 mt-1 mt-lg-0 <% if(currentPage == 'boutique'){ %>active<% } %>">La Boutique</a>
+      </li>
+      <li>
+        <a href="/candidater" class="btn btn-outline-light <% if(currentPage == 'candidater'){ %>active<% } %>" role="button">Nous Rejoindre !</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script src="/static/js/navbar.js"></script>
