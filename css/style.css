@@ -88,3 +88,52 @@ hr{
 .inlineLinks{
   color: #ff8b55 !important;
 }
+
+
+/*REJOINDRE*/
+.headerNousRejoindre{
+  background-image: url(../assets/cta-endimage.png);
+  height: 75vh;
+  background-size: cover;
+}
+.darkererNousRejoindre{
+  height: 75vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.headerNousRejoindre div{
+  margin: 0 !important;
+  height: inherit;
+  text-align: center;
+}
+input, textarea{
+  background-color:#343A40 !important;
+  color: #ff8b55 !important;
+  border: 1px solid #ff8b55 !important;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  color:    #a5b3c2 !important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    #a5b3c2 !important;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    #a5b3c2 !important;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color:    #a5b3c2 !important;
+}
+
+.is-valid{
+  border: 1px solid rgb(37, 151, 26) !important;
+  color:  rgb(37, 151, 26) !important;
+}
+
+.is-invalid{
+  border: 1px solid rgb(255, 2, 2) !important;
+  color: rgb(255, 2, 2) !important;
+}
