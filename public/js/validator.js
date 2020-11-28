@@ -14,7 +14,7 @@ const regexFormAge = RegExp("^[0-9]{1,2}$");
 const regexGodfathers = RegExp("^[a-zA-Z0-9_]{1,16}( [a-zA-Z0-9_]{1,16})* ?$");
 
 
-formMcNickname.addEventListener('input', (e) => {
+formMcNickname.addEventListener('focusout', (e) => {
     if (regexMcNickname.test(formMcNickname.value)) {
         formMcNickname.classList.add("is-valid");
         formMcNickname.classList.remove("is-invalid");
@@ -24,7 +24,7 @@ formMcNickname.addEventListener('input', (e) => {
     }
 });
 
-formDiscordNickname.addEventListener('input', (e) => {
+formDiscordNickname.addEventListener('focusout', (e) => {
     if (regexDiscordNickname.test(formDiscordNickname.value)) {
         formDiscordNickname.classList.add("is-valid");
         formDiscordNickname.classList.remove("is-invalid");
@@ -34,7 +34,7 @@ formDiscordNickname.addEventListener('input', (e) => {
     }
 });
 
-formEmail.addEventListener('input', (e) => {
+formEmail.addEventListener('focusout', (e) => {
     if (regexFormEmail.test(formEmail.value)) {
         formEmail.classList.add("is-valid");
         formEmail.classList.remove("is-invalid");
@@ -44,7 +44,7 @@ formEmail.addEventListener('input', (e) => {
     }
 });
 
-formAge.addEventListener('input', (e) => {
+formAge.addEventListener('focusout', (e) => {
     if (regexFormAge.test(formAge.value)) {
         formAge.classList.add("is-valid");
         formAge.classList.remove("is-invalid");
@@ -54,7 +54,7 @@ formAge.addEventListener('input', (e) => {
     }
 });
 
-formGodfathers.addEventListener('input', (e) => {
+formGodfathers.addEventListener('focusout', (e) => {
     if (formGodfathers.value === "") {
         formGodfathers.classList.remove("is-valid");
         formGodfathers.classList.remove("is-invalid");
@@ -67,7 +67,7 @@ formGodfathers.addEventListener('input', (e) => {
     }
 });
 
-formFoundOut.addEventListener('input', (e) => {
+formFoundOut.addEventListener('focusout', (e) => {
     if (formFoundOut.value !== "") {
         formFoundOut.classList.add("is-valid");
     } else {
@@ -75,7 +75,7 @@ formFoundOut.addEventListener('input', (e) => {
     }
 });
 
-formApply.addEventListener('input', (e) => {
+formApply.addEventListener('focusout', (e) => {
     if (formApply.value !== "") {
         formApply.classList.add("is-valid");
         formApply.classList.remove("is-invalid");
