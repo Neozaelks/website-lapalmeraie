@@ -30,44 +30,44 @@
   
   <!--FORM APPLY-->
   <div class="container mt-5">
-    <form action="" onsubmit="" name="formulaireCandidature" class="form-rejoindre" id="formulaireCandidature">
+    <form action="/candidater" method="POST" name="formulaireCandidature" class="form-rejoindre" id="formulaireCandidature">
       <div class="row">
         <div class="col-lg-4">
           <label for="">Pseudo Minecraft</label>
-          <input type="text" class="form-control" id="formMcNickname">
+          <input type="text" class="form-control" name="formMcNickname" id="formMcNickname">
           <small class="form-text text-muted">Votre pseudo en jeu. Ne le changez pas jusqu'à la validation de votre candidature.</small>
         </div>
         <div class="col-lg-4 mt-lg-0 mt-4">
           <label for="">Pseudo Discord#9999</label>
-          <input type="text" class="form-control" id="formDiscordNickname">
+          <input type="text" class="form-control" name="formDiscordNickname" id="formDiscordNickname">
           <small class="form-text text-muted">Votre pseudo Discord et votre tag. Ne le changez pas jusqu'à la validation de votre candidature.</small>
         </div>
         <div class="col-lg-4 mt-lg-0 mt-4">
           <label for="">Adresse mail</label>
-          <input type="text" class="form-control" id="formEmail">
+          <input type="text" class="form-control" name="formEmail" id="formEmail">
           <small class="form-text text-muted">Votre adresse mail. Nous nous enverrons un mail seulement si nous n'arrivons pas à vous joindre via discord, et uniquement pour vous notifier de l'avancement de votre candidature.</small>
         </div>
       </div>
       <div class="row mt-4 mt-lg-3">
         <div class="col-lg-4">
           <label for="">Âge</label>
-          <input type="text" class="form-control" id="formAge">
+          <input type="text" class="form-control" name="formAge" id="formAge">
           <small class="form-text text-muted">Votre âge. Cette information n'est utile que pour la candidature et n'est pas sauvegardée.</small>
         </div>
         <div class="col-lg-4 mt-lg-0 mt-4">
           <label for="">Pseudo du ou des parrains</label>
-          <input type="text" class="form-control" id="formGodfathers">
+          <input type="text" class="form-control" name="formGodfathers" id="formGodfathers">
           <small class="form-text text-muted">Si vous comptez jouer avec des personnes déjà présentes sur le serveur, notez-les ici.</small>
         </div>
         <div class="col-lg-4 mt-lg-0 mt-4">
           <label for="">Comment avez-vous découvert la Palmeraie ?</label>
-          <input type="text" class="form-control" id="formFoundOut">
+          <input type="text" class="form-control" name="formFoundOut" id="formFoundOut">
         </div>
       </div>
       <div class="row mt-4 mt-lg-3">
         <div class="col-12">
           <label for="">Votre Candidature</label>
-          <textarea class="form-control" id="formApply"></textarea>
+          <textarea class="form-control" name="formApply" id="formApply"></textarea>
           <small class="form-text text-muted">Qui êtes-vous ? Que comptez-vous faire sur le serveur ? Quels sont vos objectifs, vos ambitions ? Qu'est-ce qui vous attire sur le serveur ?</small>
         </div>
       </div>
@@ -81,7 +81,7 @@
     </form>
   </div>
   
-  <%- include('footer') -%>
+  <%- include('footer'); -%>
   
   <!-- Bootstrap required JS-->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
