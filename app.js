@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const botdiscord = require('./botdiscord.js')
 
 const port = 3000;
 const app = express();
@@ -27,6 +28,10 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+/////// DISCORD ///////
+botdiscord.start()
+
+// kill the bot
 
 /////// ROUTES ///////
 app.get('/', (req, res) => {
@@ -38,14 +43,18 @@ app.get('/candidater', (req, res) => {
 });
 
 app.post('/candidater', (req, res) => {
-    res.send({
-        formMcNickname: regexMcNickname.test(req.body.formMcNickname),
-        formDiscordNickname: regexDiscordNickname.test(req.body.formDiscordNickname),
-        formEmail: regexFormEmail.test(req.body.formEmail),
-        formAge: regexFormAge.test(req.body.formAge),
-        formGodfathers: req.body.formGodfathers === "" || regexGodfathers.test(req.body.formGodfathers),
-        formApply: req.body.formApply !== ""
-    });
+  // req.body > element json qui contient la candidature, envoyée par le serveur.
+  var JSONBoolResponse = {
+    formMcNickname: regexMcNickname.test(req.body.formMcNickname),
+    formDiscordNickname: regexDiscordNickname.test(req.body.formDiscordNickname),
+    formEmail: regexFormEmail.test(req.body.formEmail),
+    formAge: regexFormAge.test(req.body.formAge),
+    formGodfathers: req.body.formGodfathers === "" || regexGodfathers.test(req.body.formGodfathers),
+    formApply: req.body.formApply !== ""
+  }
+  var JSONCandidature = req.body
+  res.send(JSONBoolResponse);
+  botdiscord.printCandidature(JSONBoolResponse, JSONCandidature)
 });
 
 
