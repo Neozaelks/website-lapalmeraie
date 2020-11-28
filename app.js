@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const botdiscord = require('./botdiscord.js')
+const axios = require('axios')
+const querystring = require('querystring');
 
 const port = 3000;
 const app = express();
@@ -33,32 +35,56 @@ botdiscord.start()
 
 // kill the bot
 
+
 /////// ROUTES ///////
 app.get('/', (req, res) => {
-    res.render('index', { currentPage: 'index' });
+  res.render('index', { currentPage: 'index' });
 });
 
 app.get('/candidater', (req, res) => {
-    res.render('candidater', { currentPage: 'candidater' });
+  res.render('candidater', { currentPage: 'candidater' });
 });
 
 app.post('/candidater', (req, res) => {
-  // req.body > element json qui contient la candidature, envoyée par le serveur.
-  var JSONBoolResponse = {
-    formMcNickname: regexMcNickname.test(req.body.formMcNickname),
-    formDiscordNickname: regexDiscordNickname.test(req.body.formDiscordNickname),
-    formEmail: regexFormEmail.test(req.body.formEmail),
-    formAge: regexFormAge.test(req.body.formAge),
-    formGodfathers: req.body.formGodfathers === "" || regexGodfathers.test(req.body.formGodfathers),
-    formApply: req.body.formApply !== ""
-  }
-  var JSONCandidature = req.body
-  res.send(JSONBoolResponse);
-  botdiscord.printCandidature(JSONBoolResponse, JSONCandidature)
+  axios.post('https://www.google.com/recaptcha/api/siteverify', querystring.stringify({
+    secret: process.env.RECAPTCHA_SECRET,
+    response: req.body.token
+  })).then(response => {
+    if(response.data.success && response.data.score > 0.5){
+      // req.body > element json qui contient la candidature, envoyée par le serveur.
+      const mcNicknameValidity = regexMcNickname.test(req.body.form.mcNickname)
+      const discordNicknameValidity = regexDiscordNickname.test(req.body.form.discordNickname)
+      const emailValidity = regexFormEmail.test(req.body.form.email)
+      const ageValidity = regexFormAge.test(req.body.form.age)
+      const godfathersValidity = req.body.form.godfathers === "" || regexGodfathers.test(req.body.form.godfathers)
+      const applyValidity = req.body.form.apply !== ""
+  
+      var jsonBoolObject = {
+        success: true,
+        form: {
+          mcNickname: mcNicknameValidity,
+          discordNickname: discordNicknameValidity,
+          email: emailValidity,
+          age: ageValidity,
+          godfathers: godfathersValidity,
+          apply: applyValidity
+        },
+        formValidity: mcNicknameValidity && discordNicknameValidity && emailValidity && ageValidity && godfathersValidity && applyValidity
+      }
+  
+      if(jsonBoolObject.formValidity){
+        botdiscord.printCandidature(req.body.form)
+      }
+  
+      res.send(jsonBoolObject);
+    }else{
+      res.send({ success: false })
+    }
+  })
 });
 
 
 // Start the app
 app.listen(port, () => {
-    console.log(`Website started and is listening on port ${port}`);
+  console.log(`Website started and is listening on port ${port}`);
 });

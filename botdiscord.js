@@ -1,9 +1,12 @@
 const Discord = require('discord.js');
 require('dotenv').config();
+
 const client = new Discord.Client()
 
+const channelId = '782290323186647050'
+
 exports.start = () => {
-  client.login(process.env.TOKEN)
+  client.login(process.env.BOT_TOKEN)
   console.log("Sucessfully started")
 }
 
@@ -12,41 +15,28 @@ exports.stop = () => {
   console.log("Sucesfully killed. How dare you ?")
 }
 
-exports.printCandidature = (jsonBoolObject, jsonCandidatureObject) => {
-  var isDataUnsable = false
-  var channelCandidatures = '782290323186647050'
-  for(i in jsonBoolObject){
-    if(jsonBoolObject[i] == false){
-      isDataUnsable = true
-    }
+exports.printCandidature = (formResponse) => {
+  let discordTag
+  const discordUser = client.users.cache.find(u => u.tag === formResponse.discordNickname)
+  if(typeof discordUser === 'undefined'){
+    discordTag = formResponse.discordNickname
+  } else {
+    discordTag = `<@${discordUser.id}>`
   }
-  if(isDataUnsable){
-    console.log("Houston, we have a problem.")
-  }else{
-    //TODO Build message for Poca the fils de pute MESSAGE
-    var discordTag
-    const discordUser = client.users.cache.find(u => u.tag === jsonCandidatureObject.formDiscordNickname)
 
-    if(typeof discordUser === 'undefined'){
-      discordTag = jsonCandidatureObject.formDiscordNickname
-    } else {
-      discordTag = `<@${discordUser.id}>`
-    }
+  const embed = new Discord.MessageEmbed()
+  .setTitle(formResponse.mcNickname)
+  .setColor('#ff8b55')
+  .setThumbnail(`https://minotar.net/avatar/${formResponse.mcNickname}/128`)
+  .addField("Age", formResponse.age, true)
+  .addField("Pseudo Discord", discordTag, true)
+  .addField("Adresse mail", formResponse.email, false)
+  .addField("Pseudo du/des Parrain(s)", formResponse.godfathers === "" ? "Non Renseigné" : formResponse.godfathers, true)
+  .addField("Méthode de Découverte", formResponse.foundOut === "" ? "Non Renseigné" : formResponse.foundOut, true)
+  .addField("Candidature", "⬇")
+  .setFooter(formResponse.apply)
 
-    embed = new Discord.MessageEmbed()
-    .setTitle(jsonCandidatureObject.formMcNickname)
-    .setColor('#ff8b55')
-    .setThumbnail(`https://minotar.net/avatar/${jsonCandidatureObject.formMcNickname}/128`)
-    .addField("Age", jsonCandidatureObject.formAge, true)
-    .addField("Pseudo Discord", discordTag, true)
-    .addField("Adresse mail", jsonCandidatureObject.formEmail, true)
-    .addField("Pseudo des Parrains", jsonCandidatureObject.formGodfathers === "" ? "Aucun" : jsonCandidatureObject.formGodfathers, true)
-    .addField("Méthode de Découverte", jsonCandidatureObject.formFoundOut, true)
-    .addField("Candidature", "⬇")
-    .setFooter(jsonCandidatureObject.formApply)
-
-    client.channels.fetch(channelCandidatures).then((channel) => {
-      channel.send(embed)
-    })
-  }
+  client.channels.fetch(channelId).then((channel) => {
+    channel.send(embed)
+  })
 }
