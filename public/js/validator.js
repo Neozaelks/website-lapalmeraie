@@ -133,9 +133,13 @@ form.addEventListener('submit', (e) => {
             setInputFieldValidity(formApply, data.form.apply)
 
             if (data.formValidity) {
-              alert('the form has been successfully sent'); // TODO add a real message
+              if (data.discordPresence) {
+                alert('the form has been successfully sent'); // TODO add a real message
+              } else {
+                alert('you are not on discord'); // TODO add a real message
+              }
             } else {
-              alert('the form could not be sent'); // TODO add a real message
+              alert('there is invalid fields in your form'); // TODO add a real message
             }
           }
         });

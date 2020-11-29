@@ -59,7 +59,7 @@ app.post('/candidater', (req, res) => {
       const godfathersValidity = req.body.form.godfathers === "" || regexGodfathers.test(req.body.form.godfathers)
       const applyValidity = req.body.form.apply !== ""
   
-      var jsonBoolObject = {
+      const jsonBoolObject = {
         success: true,
         form: {
           mcNickname: mcNicknameValidity,
@@ -69,10 +69,11 @@ app.post('/candidater', (req, res) => {
           godfathers: godfathersValidity,
           apply: applyValidity
         },
-        formValidity: mcNicknameValidity && discordNicknameValidity && emailValidity && ageValidity && godfathersValidity && applyValidity
+        formValidity: mcNicknameValidity && discordNicknameValidity && emailValidity && ageValidity && godfathersValidity && applyValidity,
+        discordPresence: discordNicknameValidity && botdiscord.isUserPresent(req.body.form.discordNickname)
       }
   
-      if(jsonBoolObject.formValidity){
+      if(jsonBoolObject.formValidity && jsonBoolObject.discordPresence){
         botdiscord.printCandidature(req.body.form)
       }
   
