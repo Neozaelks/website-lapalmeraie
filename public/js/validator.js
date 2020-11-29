@@ -11,7 +11,7 @@ const regexMcNickname = RegExp("^[a-zA-Z0-9_]{1,16}$");
 const regexDiscordNickname = RegExp("^.{2,32}#[0-9]{4}$");
 const regexFormEmail = RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$");
 const regexFormAge = RegExp("^[0-9]{1,2}$");
-const regexGodfathers = RegExp("^[a-zA-Z0-9_]{1,16}( [a-zA-Z0-9_]{1,16})* ?$");
+const regexGodfathers = RegExp("^[a-zA-Z0-9_]{1,16}( [a-zA-Z0-9_]{1,16}){0,2}$");
 
 
 function setInputFieldValidity(inputField, isValid) {
@@ -53,6 +53,16 @@ function checkGodfathersValidity() {
   }
 }
 
+function checkFoundOutValidity() {
+  if (formFoundOut.value === "") {
+    formFoundOut.classList.remove("is-valid");
+    formFoundOut.classList.remove("is-invalid");
+    return true
+  } else {
+    return setInputFieldValidity(formFoundOut, formFoundOut.value.length <= 256)
+  }
+}
+
 
 formMcNickname.addEventListener('focusout', (e) => {
   checkInputValidity(regexMcNickname, formMcNickname)
@@ -75,15 +85,11 @@ formGodfathers.addEventListener('focusout', (e) => {
 });
 
 formFoundOut.addEventListener('focusout', (e) => {
-  if (formFoundOut.value !== "") {
-    formFoundOut.classList.add("is-valid");
-  } else {
-    formFoundOut.classList.remove("is-valid");
-  }
+  checkFoundOutValidity()
 });
 
 formApply.addEventListener('focusout', (e) => {
-  setInputFieldValidity(formApply, formApply.value !== "")
+  setInputFieldValidity(formApply, formApply.value !== "" && formApply.value.length < 2048)
 });
 
 
@@ -95,10 +101,11 @@ form.addEventListener('submit', (e) => {
   const emailValidity = checkInputValidity(regexFormEmail, formEmail)
   const ageValidity = checkInputValidity(regexFormAge, formAge)
   const godfathersValidity = checkGodfathersValidity()
-  const applyValidity = setInputFieldValidity(formApply, formApply.value !== "")
+  const foundOutValidity = checkFoundOutValidity()
+  const applyValidity = setInputFieldValidity(formApply, formApply.value !== "" && formApply.value.length <= 2048)
 
   if (mcNicknameValidity && discordNicknameValidity && emailValidity &&
-    ageValidity && godfathersValidity && applyValidity) {
+    ageValidity && godfathersValidity && foundOutValidity && applyValidity) {
     grecaptcha.ready(function () {
       grecaptcha.execute('6Lf7IvEZAAAAAPzloUcoWk5DaaurFUmRsK7CVUtu', { action: 'submit' })
       .then(function (token) {
@@ -130,6 +137,7 @@ form.addEventListener('submit', (e) => {
             setInputFieldValidity(formEmail, data.form.email)
             setInputFieldValidity(formAge, data.form.age)
             setInputFieldValidity(formGodfathers, data.form.godfathers)
+            setInputFieldValidity(formFoundOut, data.form.foundOut)
             setInputFieldValidity(formApply, data.form.apply)
 
             if (data.formValidity) {

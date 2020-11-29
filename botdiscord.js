@@ -36,18 +36,19 @@ exports.isUserPresent = (userTag) => {
   return typeof guild.members.cache.find(member => member.user.tag === userTag) !== 'undefined'
 }
 
-exports.printCandidature = (formResponse) => {
+exports.printCandidature = (form) => {
   const embed = new Discord.MessageEmbed()
-  .setTitle(formResponse.mcNickname)
+  .setTitle(form.mcNickname)
   .setColor(waitingColor)
-  .setThumbnail(`https://minotar.net/avatar/${formResponse.mcNickname}/128`)
-  .addField("Age", formResponse.age, true)
-  .addField("Pseudo Discord", `<@${client.users.cache.find(u => u.tag === formResponse.discordNickname).id}>`, true)
-  .addField("Adresse mail", formResponse.email, false)
-  .addField("Pseudo du/des Parrain(s)", formResponse.godfathers === "" ? "Non Renseigné" : formResponse.godfathers, true)
-  .addField("Méthode de Découverte", formResponse.foundOut === "" ? "Non Renseigné" : formResponse.foundOut, true)
+  .setThumbnail(`https://minotar.net/avatar/${form.mcNickname}/128`)
+  .setTimestamp()
+  .addField("Age", form.age, true)
+  .addField("Pseudo Discord", `<@${client.users.cache.find(u => u.tag === form.discordNickname).id}>`, true)
+  .addField("Adresse mail", form.email)
+  .addField("Pseudo du/des Parrain(s)", form.godfathers === "" ? "Non Renseigné" : form.godfathers)
+  .addField("Méthode de Découverte", form.foundOut === "" ? "Non Renseigné" : form.foundOut)
   .addField("Candidature", "⬇")
-  .setFooter(formResponse.apply)
+  .setFooter(form.apply)
 
   channel.send(embed).then(msg => {
     msg.react('🟥')

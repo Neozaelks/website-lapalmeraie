@@ -13,7 +13,7 @@ const regexMcNickname = RegExp("^[a-zA-Z0-9_]{1,16}$");
 const regexDiscordNickname = RegExp("^.{2,32}#[0-9]{4}$");
 const regexFormEmail = RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$");
 const regexFormAge = RegExp("^[0-9]{1,2}$");
-const regexGodfathers = RegExp("^[a-zA-Z0-9_]{1,16}( [a-zA-Z0-9_]{1,16})* ?$");
+const regexGodfathers = RegExp("^[a-zA-Z0-9_]{1,16}( [a-zA-Z0-9_]{1,16}){0,2}$");
 
 
 // Prevents fingerprinting
@@ -57,7 +57,8 @@ app.post('/candidater', (req, res) => {
       const emailValidity = regexFormEmail.test(req.body.form.email)
       const ageValidity = regexFormAge.test(req.body.form.age)
       const godfathersValidity = req.body.form.godfathers === "" || regexGodfathers.test(req.body.form.godfathers)
-      const applyValidity = req.body.form.apply !== ""
+      const foundOutValidity = req.body.form.foundOut === "" || req.body.form.foundOut.length <= 256
+      const applyValidity = req.body.form.apply !== "" && req.body.form.apply.length <= 2048
   
       const jsonBoolObject = {
         success: true,
@@ -67,9 +68,10 @@ app.post('/candidater', (req, res) => {
           email: emailValidity,
           age: ageValidity,
           godfathers: godfathersValidity,
+          foundOut: foundOutValidity,
           apply: applyValidity
         },
-        formValidity: mcNicknameValidity && discordNicknameValidity && emailValidity && ageValidity && godfathersValidity && applyValidity,
+        formValidity: mcNicknameValidity && discordNicknameValidity && emailValidity && ageValidity && godfathersValidity && foundOutValidity && applyValidity,
         discordPresence: discordNicknameValidity && botdiscord.isUserPresent(req.body.form.discordNickname)
       }
   
