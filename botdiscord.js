@@ -63,18 +63,63 @@ client.on('messageReactionAdd', async (reaction, user) => {
         const embed = react.message.embeds[0]
         if (embed.hexColor === waitingColor) {
           if (react.emoji.toString() === "🟥") {
-            embed.setColor(refusedColor)
-            embed.setAuthor(`${user.tag} (${user.id})`, user.avatarURL({ dynamic: true }))
-            react.message.edit(embed)
-            react.message.reactions.removeAll()
+            refuseCandidature(react.message, embed, user)
           } else if (react.emoji.toString() === "🟩") {
-            embed.setColor(acceptedColor)
-            embed.setAuthor(`${user.tag} (${user.id})`, user.avatarURL({ dynamic: true }))
-            react.message.edit(embed)
-            react.message.reactions.removeAll()
+            acceptCandidature(react.message, embed, user)
           }
         }
       }
     })
   }
 })
+
+function refuseCandidature(message, embed, user) {
+  const candidateId = embed.fields.find(field => field.name === "Pseudo Discord").value.slice(2, -1)
+  const candidate = guild.members.cache.get(candidateId)
+  const candidateName = embed.title
+
+  if (typeof candidate !== 'undefined') {
+    candidate.createDM().then(dmChannel => {
+      const acceptedEmbed = new Discord.MessageEmbed()
+        .setColor(refusedColor)
+        .setThumbnail(guild.iconURL({ dynamic: true }))
+        .setTitle("Candidature Refusée")
+        .setDescription(`Désolé **${candidateName}** mais nous avons le malheur de vous annoncer que votre candidature à été refusée pour plus d'informations veuillez contacter <@${user.id}>`)
+      dmChannel.send(acceptedEmbed)
+    })
+  }
+
+  embed.setColor(refusedColor)
+    .setAuthor(`${user.tag} (${user.id})`, user.avatarURL({ dynamic: true }))
+    .setTimestamp()
+
+  message.edit(embed)
+  message.reactions.removeAll()
+}
+
+function acceptCandidature(message, embed, user) {
+  const candidateId = embed.fields.find(field => field.name === "Pseudo Discord").value.slice(2, -1)
+  const candidate = guild.members.cache.get(candidateId)
+  const candidateName = embed.title
+
+  if (typeof candidate !== 'undefined') {
+    candidate.createDM().then(dmChannel => {
+      const acceptedEmbed = new Discord.MessageEmbed()
+        .setColor(acceptedColor)
+        .setThumbnail(guild.iconURL({ dynamic: true }))
+        .setTitle("Candidature Acceptée")
+        .setDescription(`
+        Bienvenue sur La Palmeraie **${candidateName}**
+        Tu peux désormais te connecter sur le serveur en utilisant cette adresse IP : \`play.lapalmeraiemc.fr\`
+        Nous te conseillons aussi d'aller voir notre tutoriel sur nos ajouts à cette adresse : http://tuto.lapalmeraiemc.fr`)
+      dmChannel.send(acceptedEmbed)
+    })
+  }
+
+  embed.setColor(acceptedColor)
+    .setAuthor(`${user.tag} (${user.id})`, user.avatarURL({ dynamic: true }))
+    .setTimestamp()
+
+  message.edit(embed)
+  message.reactions.removeAll()
+}
