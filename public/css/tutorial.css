@@ -1,0 +1,48 @@
+/*Tutorial*/
+
+.headerTutorial{
+  background-image: url('/static/assets/header-bg-tutorial.png');
+  height: 75vh;
+  background-size: cover;
+}
+.darkererTutorial{
+  height: 75vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.headerTutorial div{
+  margin: 0 !important;
+  height: inherit;
+  text-align: center;
+}
+
+h2{
+  margin-top: 5vh;
+}
+
+h3, h4, h5{
+  margin-top: 3vh;
+}
+
+.slim{
+  width: 5vw !important;
+  border: 0.5px solid #FA6C2C !important; 
+}
+img{
+  display: block;
+}
+
+code{
+  color: #FA6C2C;
+}
+
+.inline{
+  color: #FA6C2C;
+  text-decoration: underline;
+}
+.inline:hover{
+  color: #f5a681;
+}

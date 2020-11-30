@@ -45,6 +45,10 @@ app.get('/candidater', (req, res) => {
   res.render('candidater', { currentPage: 'candidater' });
 });
 
+app.get('/tutorial', (req, res) => {
+  res.render('tutorial', { currentPage: 'tutorial' });
+});
+
 app.post('/candidater', (req, res) => {
   axios.post('https://www.google.com/recaptcha/api/siteverify', querystring.stringify({
     secret: process.env.RECAPTCHA_SECRET,

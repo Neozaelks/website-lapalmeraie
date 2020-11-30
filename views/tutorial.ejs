@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/arrow-scroller.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/Tutorial.css" type="text/css">
+  
+  <title>La Palmeraie — Serveur Minecraft 1.16.3</title>
+</head>
+
+<body class="bg-dark text-white">
+  <%- include('navbar'); -%>
+  
+  <!--HEADER WEBSITE CONTENT-->
+  <div class="container-fluid px-0 headerTutorial text-white">
+    <div class="darkererTutorial">
+      <div class="row text-center">
+        <div class="col-12 d-flex align-items-center justify-content-center flex-wrap align-content-center">
+          <h1 class="display-3 w-100">Le Tutoriel !</h1>
+          <p class="lead mt-3">Toutes les informations dont vous avez besoin pour jouer sur le serveur.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--MAIN WEBSITE CONTENT-->
+  
+  <div class="container mb-5">
+    <div class="row">
+      <div class="col">
+        <h2>0 — Lier son compte</h2>
+        <hr class="mb-4 mt-0 d-inline-block mx-auto">
+        <p>Pour pouvoir jouer sur le serveur, il est <strong>impératif</strong> de lier son compte Minecraft à son compte Discord.</p>
+        <p>Pour ce faire il vous suffit de rejoindre le serveur discord de <strong>La Palmeraie</strong> disponible à <a class="inline"href="https://discord.com/invite/C6Q62jR">ce lien !</a> Ensuite rendez-vous dans le canal #lies-ton-compte et effectuez la commande <code>$link &lt;votre pseudo minecraft&gt;</code></p>
+        <p>Et voilà, votre compte est lié, vous etes donc devenu membre du serveur, vous pouvez desormais jouer au jeu.</p>
+        
+        
+        <h2>1 — Le Spawn</h2>
+        <hr class="mb-4 mt-0 d-inline-block mx-auto">
+        <p>Le spawn est l&#39;endroit où vous arrivez pour la première fois sur le serveur, ou lorsque vous mourrez sans avoir défini votre point de réapparition. Vous pouvez également vous-y rendre en tapant la commande <code>/spawn</code>.</p>
+        <p>Le spawn contient beaucoup de choses, en voici une liste :</p>
+        
+        <h3>La Place Centrale</h3>
+        <hr class="mb-4 mt-0 d-inline-block mx-auto slim">
+        <p>La Place Centrale est l&#39;endroit où les joueurs se rencontrent, et où vous pourrez effectuer du commerce. Elle contient 3 points d&#39;intêret majeurs :</p>
+        <ul>
+          <li><strong>Le Hall des Villageois</strong> : Vous y trouverez des PNJs proposant toutes sortes d&#39;échanges, qu&#39;ils soient saisonniers ou permanants.</li>
+          <li><strong>La Salle de Réunion</strong> : Ici, vous trouverez les membres du Staff, qui vous apportent La Palmeraie.</li>
+          <li><strong>La Maison du Builder</strong> : Ici, vous trouverez la maison du créateur du spawn : Archelaus.</li>
+          <li><strong>Roberto DeLaChambreDuCommerce</strong> : Ici, vous pourrez acheter vos effigies de Commerce. Plus d&#39;infos dans la partie &quot;L&#39;économie&quot;.</li>
+        </ul>
+        
+        <h3>Le Monde Freebuild</h3>
+        <hr class="mb-4 mt-0 d-inline-block mx-auto slim">
+        <p>Le monde Freebuild se trouve juste en dessous de l&#39;île du spawn, il vous suffit de sauter et de commencer votre aventure, repérer des lieux ou vous installer et build librement ! Le monde freebuild fait 50000 blocs carrés.</p>
+        <p class="text-muted">⚠ Evitez de trop détruire les zones où vous ne comptez pas vous installer. Si vous trouvez un biome sympa et qu&#39;une personne l&#39;a déjà détruit, vous allez vouloir l&#39;insulter. Ne soyez pas cette personne.</p>
+        
+        <h3>Le Monde Ressources et le portail du Nether</h3>
+        <hr class="mb-4 mt-0 d-inline-block mx-auto slim">
+        <p>Le portail menant au monde Ressources ainsi que celui menant dans le Nether du monde Freebuild se trouvent au fond de la mine, située au bout du pont à droite du point de spawn.</p>
+        <p>Dans le monde Ressources, il vous est possible de récupérer absolument tout ce que vous désirez. Il n&#39;a pas autant de limitations que le monde Freebuild. </p>
+        <p class="text-muted">ℹ Si vous désirez récupérer tout le sable d&#39;un biome, faites-le dans le Monde Ressources !</p>
+        <p>Le monde ressources possède aussi son propre Nether et son propre End.</p>
+        
+        
+        <h2>2 — L&#39;économie</h2>
+        <hr class="mb-4 mt-0 d-inline-block mx-auto">
+        <p>La monnaie du serveur est le Token Banane. Vous pouvez l&#39;obtenir en votant sur les différents sites de votes, obtenables à partir de la commande <code>/vote</code>.</p>
+        
+        <h3>Les utilités du Token Banane (Ƀ)</h3>
+        <hr class="mb-4 mt-0 d-inline-block mx-auto slim">
+        
+        <h4>Chez Philou Ravitaillement</h4>
+        <p>Dans le spawn du monde ressources, vous pouvez échanger à Philibert des objets contre des Token Banane.</p>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th>Prix</th>
+              <th>Objet</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>64 Ƀ</td>
+              <td>x1 Boîte de Shulker</td>
+            </tr>
+            <tr>
+              <td>1 Ƀ</td>
+              <td>x16 Steak</td>
+            </tr>
+            <tr>
+              <td>1 Ƀ</td>
+              <td>x1 Epée en fer S1U1</td>
+            </tr>
+            <tr>
+              <td>1 Ƀ</td>
+              <td>x1 Pioche en fer E1U1</td>
+            </tr>
+            <tr>
+              <td>1 Ƀ</td>
+              <td>x1 Hache en fer E1U1</td>
+            </tr>
+            <tr>
+              <td>1 Ƀ</td>
+              <td>x1 Pelle en fer E1U1</td>
+            </tr>
+            <tr>
+              <td>3 Ƀ</td>
+              <td>x1 Casque en mailles</td>
+            </tr>
+            <tr>
+              <td>3 Ƀ</td>
+              <td>x1 Plastron en mailles</td>
+            </tr>
+            <tr>
+              <td>3 Ƀ</td>
+              <td>x1 Jambières en mailles</td>
+            </tr>
+            <tr>
+              <td>3 Ƀ</td>
+              <td>x1 Bottes en mailles</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h4>A L&#39;entrée de La Mine</h4>
+        <p>A L&#39;entrée de La Mine vous propose des ressources issues du minage contre des Token Banane.</p>
+        <h5>Jean-Charles</h5>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th>Prix</th>
+              <th>Objet</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>4 Ƀ</td>
+              <td>x64 Gravier</td>
+            </tr>
+            <tr>
+              <td>4 Ƀ</td>
+              <td>x64 Sable</td>
+            </tr>
+            <tr>
+              <td>4 Ƀ</td>
+              <td>x64 Glace</td>
+            </tr>
+            <tr>
+              <td>8 Ƀ</td>
+              <td>x64 Glace Compactée</td>
+            </tr>
+            <tr>
+              <td>16 Ƀ</td>
+              <td>x64 Glace Bleue</td>
+            </tr>
+          </tbody>
+        </table>
+        <h5>Jean-Eudes</h5>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th>Prix</th>
+              <th>Objet</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>4 Ƀ</td>
+              <td>x64 Terre Cuite</td>
+            </tr>
+            <tr>
+              <td>4 Ƀ</td>
+              <td>x64 Sable Rouge</td>
+            </tr>
+            <tr>
+              <td>8 Ƀ</td>
+              <td>x64 Tige Carmin</td>
+            </tr>
+            <tr>
+              <td>8 Ƀ</td>
+              <td>x64 Tige Biscornue</td>
+            </tr>
+            <tr>
+              <td>4 Ƀ</td>
+              <td>x16 Champignon Biscornu</td>
+            </tr>
+            <tr>
+              <td>4 Ƀ</td>
+              <td>x16 Champignon Carmin</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h3>Les Commerçants</h3>
+        <hr class="mb-4 mt-0 d-inline-block mx-auto slim">
+        <h4>Qu&#39;est-ce qu&#39;un commerçant ?</h4>
+        <p>Un commerçant est une entité qui vous permet de commercer avec les autres joueurs en toute sécurité, sans avoir peur de se faire voler !</p>
+        <h4>Comment obtenir un commerçant ?</h4>
+        <p>Dans la place centrale, <strong>Roberto DeLaChambreDuCommerce</strong> vend des Effigies de commerce pour 16 Ƀ. Vous pouvez uniquement utiliser 5 commerçants à la fois (7 commerçants max pour les actionnaires).</p>
+        <p class="text-muted">⚠ Utiliser un commerçant coute 1 Ƀ par jour.</p>
+        <h4>Comment utiliser les commerçants ?</h4>
+        <ol>
+          <li>Placez un coffre proche de l&#39;endroit où vous voulez placer votre commerçant. Le coffre lui servira d&#39;entrepôt.
+          <p class="text-muted">ℹ Ce dernier sera automatiquement protégé.</p>
+        </li>
+        <li>Avec votre effigie en main, accroupissez-vous et faites clic droit ou gauche <strong>dans le vide</strong> pour changer le type de commerçant.</li>
+        <li>En gardant toujours votre effigie en main, faites clic droit sur le coffre.</li>
+        <li>Faites clic droit avec votre effigie sur le bloc où vous voulez poser votre commerçant.
+          <p class="text-muted">⚠ Une fois que votre commerçant est posé vous ne pourrez pas le récupérer !</p>
+      </li>
+      <li>Placez les ressources que vous souhaitez vendre dans le coffre.
+        <p class="text-muted">⚠ Ne le remplissez pas entièrement, c&#39;est aussi dans ce coffre que seront stockés les profits que vous ferez !</p>
+    </li>
+    <li>Accroupissez-vous, puis faites clic-droit sur le commerçant.
+      La première ligne représente les objets que vous mettez en vente.
+      La seconde, et la troisième ligne représentent le prix ce des objets. Vous pouvez ajouter des objets depuis votre inventaire pour définir leur prix, puis faire clic droit ou clic gauche pour changer leur nombre.
+      Les livres vous permettent de changer de page.
+      La dernière ligne contient les options du commerçant.
+      Une fois que vous avez terminé, fermez le menu.
+      <img src="https://cdn.discordapp.com/attachments/664863799219847190/777557930010083328/unknown.png" alt=""></li>
+      <li>Lorsque votre commerçant est prêt, faites shift+clic gauche pour ouvrir son menu de paie. Il vous coûtera 1 Ƀ par jour réél.</li>
+      <li>Votre commerçant est prêt !</li>
+    </ol>
+    
+    
+    <h2>3 — Les Datapacks</h2>
+    <hr class="mb-4 mt-0 d-inline-block mx-auto">
+    <p>Le serveur utilise plusieurs datapacks pour améliorer l&#39;expérience de jeu. En voici une liste : </p>
+    <ul>
+      <li><strong>Dragon drops</strong> — Ajoute des butins à la mort du Dragon de l&#39;End, ce dernier donne <code>20%</code> de chances de récupérer des Elytres, et <code>15%</code> de donner un Oeuf de Dragon.</li>
+      <li><strong>Cauldron Concrete</strong> — Vous permet de transformer du béton en poudre en béton durci, en le lancant dans un chaudron repli d&#39;eau.</li>
+      <li><strong>Armor Statues</strong> — Ajoute un livre permettant de contrôler l&#39;affichage et la position des Porte-Armures, des Cadres, et de tout un tas d&#39;autres objets. Il est possible de récupérer en signant un livre sous le nom <code>Statues</code>.</li>
+      <li><strong>Larger Phantoms</strong> — Plus vous passez de nuits sans dormir, plus les phantoms deviennent coriaces et imposants.</li>
+    </ul>
+    
+    
+    <h2>4 — Les commandes</h2>
+    <hr class="mb-4 mt-0 d-inline-block mx-auto">
+  </div>
+  <div class="col-12">
+    <h3>Chat &amp; Communication</h3>
+    <hr class="mb-4 mt-0 d-inline-block mx-auto slim">
+  </div>
+  <div class="col-6">
+    <h4><code>/message &lt;pseudo&gt; &lt;message&gt;</code></h4>
+    <p>Alias : <code>/msg</code>, <code>/dm</code>, <code>/pm</code>, <code>/tell</code>, <code>/whisper</code>, <code>/w</code></p>
+    <p>Utilisation : Permet d&#39;envoyer un message privé à une personne.</p>
+    <h4><code>/reply &lt;message&gt;</code></h4>
+    <p>Alias : <code>/r</code></p>
+    <p>Utilisation : Répond a la dernière personne qui vous a envoyé un message privé.</p>
+    <h4><code>/msgtoggle</code></h4>
+    <p>Alias : <code>aucun</code></p>
+    <p>Utilisation : Empêche tout les autres joueurs de vous envoyer des messages privés. Réutiliser la commande annule son effet.</p>
+  </div>
+  <div class="col-6">
+    <h4><code>/ignore &lt;pseudo&gt;</code></h4>
+    <p>Alias : <code>aucun</code></p>
+    <p>Utilisation : Permet de ne plus recevoir les messages d&#39;une personne, qu&#39;ils soient privés ou publics. Réutiliser la commande annule son effet.</p>
+    <h4><code>/discord</code></h4>
+    <p>Alias : <code>aucun</code></p>
+    <p>Utilisation : Envoie une invitation au serveur discord dans le chat.</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <h3>Téléportation &amp; Mobilité</h3>
+    <hr class="mb-4 mt-0 d-inline-block mx-auto slim">
+  </div>
+  <div class="col-6">
+    <h4><code>/spawn</code></h4>
+    <p>Alias : <code>aucun</code></p>
+    <p>Utilisation : Vous téléporte au spawn.</p>
+    <h4><code>/warps</code></h4>
+    <p>Alias : <code>aucun</code></p>
+    <p>Utilisation : Donne la liste des points de téléportation <strong>publics</strong> disponibles. </p>
+    <h4><code>/warp &lt;nom&gt;</code></h4>
+    <p>Alias : <code>aucun</code></p>
+    <p>Utilisation : Vous téléporte au point de téléportation <strong>public</strong> seléctionné.</p>
+    <h4><code>/sethome &lt;nom du home&gt;</code></h4>
+    <p>Alias : <code>aucun</code></p>
+    <p>Utilisation : Créé un point de téléportation <strong>personnel</strong> à votre position actuelle.</p>
+    <h4><code>/delhome &lt;nom du home&gt;</code></h4>
+    <p>Alias : <code>aucun</code></p>
+    <p>Utilisation : Supprime le point de téléportation <strong>personel</strong> séléctionné.</p>
+  </div>
+  <div class="col-6">
+    <h4><code>/homes</code></h4>
+    <p>Alias : <code>aucun</code></p>
+    <p>Utilisation : Donne la liste de vos points de téléportation <strong>personnels</strong>.</p>
+    <h4><code>/home &lt;nom du home&gt;</code></h4>
+    <p>Alias : <code>aucun</code></p>
+    <p>Utilisation : Vous téléporte au point de téléportation séléctionné.</p>
+    <h4><code>/lit</code></h4>
+    <p>Alias : <code>/home lit</code>, <code>/bed</code>, <code>/home bed</code></p>
+    <p>Utilisation : Vous téléporte à votre point de réapparition.</p>
+    <h4><code>/back</code></h4>
+    <p>Alias : <code>aucun</code></p>
+    <p>Temps de récupération : 10mns (5mns si donateur)</p>
+    <p>Utilisation : Vous permet de vous téléporter au dernier endroit depuis lequel vous vous êtes téléporté.</p>
+    <p>Explication logique : Control+Z une téléportation</p>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h3>Combat &amp; Autres</h3>
+      <hr class="mb-4 mt-0 d-inline-block mx-auto slim">
+    </div>
+    <div class="col-6">
+      <h4><code>/pvptoggle</code></h4>
+      <p>Alias : <code>/pvp</code></p>
+      <p>Utilisation : Active ou désactive le joueur contre joueur sur votre personne. </p>
+        <p class="text-muted">ℹ Les équipements perdus à cause de cette commande ne seront pas retournés, cheh.</p>
+      <h4><code>/suicide</code></h4>
+      <p>Alias : <code>aucun</code></p>
+      <p>Utilisation : Vous fait perdre le combat. Ou mourir, en fonction du contexte.</p>
+      <h4><code>/revive</code></h4>
+      <p>Alias : <code>aucun</code></p>
+      <p>Temps de récupération : 24h (12h si donateur)</p>
+      <p>Utilisation : Vous téléporte à l&#39;endroit de votre dernière mort.</p>
+    </div>
+    <div class="col-6">
+      <h4><code>/afk</code></h4>
+      <p>Alias : <code>aucun</code></p>
+      <p>Utilisation : Vous affiche inactif sur le tab et sur le chat.</p>
+      <h4><code>/afktoggle</code></h4>
+      <p>Alias : <code>aucun</code></p>
+      <p>Utilisation : Vous permet de rester inactif plus longtemps avant d&#39;être déconnecté.</p>
+      <h4><code>/headdb</code></h4>
+      <p>Alias : <code>/heads</code>, <code>/hdb</code></p>
+      <p>Utilisation : Vous ouvre un inventaire vous permettant d&#39;acheter des têtes pour de la décoration à 5Ƀ l&#39;unité</p>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <h2>5 — Le Grade Actionnaire</h2>
+      <hr class="mb-4 mt-0 d-inline-block mx-auto">
+      <p><strong>Pour montrer leur soutien au serveur, les membres peuvent contribuer à la hauteur de <code>2.99€ par mois</code>. Les bénéfices qu&#39;ils obiennent en contrepartie sont les suivants :</strong></p>
+      <ul>
+        <li>Possibilité de recevoir 3 Token Banane a la place de 1 lors d&#39;un vote, sans retirer la probabilité d&#39;en avoir 2</li>
+        <li>L&#39;accès a un home supplémentaire (pour un total de 2 homes)</li>
+        <li>La possiblilité d&#39;écrire en couleur dans le chat :
+          <img src="https://cdn.discordapp.com/attachments/664863799219847190/777561965060161536/example2-png.png" alt="">
+          écriture en Hex code disponible via <code>&amp;#123</code> ou <code>&amp;#123456</code></li>
+          <li>Acces au <code>/rest</code> : permet de réinitialiser le temps sans avoir dormi, pratique pour éviter les phantoms.</li>
+          <li>Acces au <code>/hat</code> : permet de mettre l&#39;item en main sur sa tête. (avec une emeraude ca fait un sims)</li>
+          <li>Acces au <code>/trash</code> : clairement une poubelle portative ou que vous soyez.</li>
+          <li>Avoir une couleur et un rôle différent dans le chat, et sur le discord.</li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  </div>
+
+  <!--CTA END PAGE-->
+  <div class="container-fluid px-0 ctaEndImage text-white">
+    <div class="darkererCTA">
+      <div class="row text-center">
+        <div class="col-12 d-flex align-items-center justify-content-center flex-wrap align-content-center">
+          <h3 class="display-3 w-100">Alors, convaincu.e  ?</h3>
+          <a href="/candidater" class="btn btn-lg btn-primary mt-4">Nous rejoindre ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('footer'); -%>
+  <!-- Bootstrap required JS-->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>

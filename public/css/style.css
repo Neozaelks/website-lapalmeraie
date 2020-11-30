@@ -76,7 +76,7 @@ ul li a{
 }
 
 hr{
-  width: 5vw !important;
+  width: 10vw !important;
   border: 2px solid #FA6C2C !important; 
 }
 
@@ -137,3 +137,4 @@ input, textarea{
   border: 1px solid rgb(255, 2, 2) !important;
   color: rgb(255, 2, 2) !important;
 }
+
