@@ -94,7 +94,6 @@ function refuseCandidature(message, embed, user) {
 
   embed.setColor(refusedColor)
     .setAuthor(`${user.tag} (${user.id})`, user.avatarURL({ dynamic: true }))
-    .setTimestamp()
 
   message.edit(embed)
   message.reactions.removeAll()
@@ -122,7 +121,6 @@ function acceptCandidature(message, embed, user) {
 
   embed.setColor(acceptedColor)
     .setAuthor(`${user.tag} (${user.id})`, user.avatarURL({ dynamic: true }))
-    .setTimestamp()
 
   message.edit(embed)
   message.reactions.removeAll()
