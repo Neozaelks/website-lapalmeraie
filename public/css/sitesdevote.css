@@ -1,0 +1,26 @@
+.headerVote{
+  background-image: url('/static/assets/header-bg-vote.png');
+  height: 75vh;
+  background-size: cover;
+}
+.darkererVote{
+  height: 75vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.headerVote div{
+  margin: 0 !important;
+  height: inherit;
+  text-align: center;
+}
+
+.inline{
+  color: #FA6C2C;
+  text-decoration: none;
+}
+.inline:hover{
+  color: #f5a681;
+}

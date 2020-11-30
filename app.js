@@ -32,12 +32,13 @@ app.set('views', path.join(__dirname, 'views'));
 /////// DISCORD ///////
 botdiscord.start()
 
-// kill the bot
-
-
 /////// ROUTES ///////
 app.get('/', (req, res) => {
   res.render('index', { currentPage: 'index' });
+});
+
+app.get('/sitesdevote', (req, res)  => {
+  res.render('sitesdevote', { currentPage: 'sitesdevote'});
 });
 
 app.get('/candidater', (req, res) => {
