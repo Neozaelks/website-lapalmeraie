@@ -7,6 +7,8 @@ const guildId = '694628130010431518'
 let guild
 const channelId = '782290323186647050'
 let channel
+const roleId = '694638894909620325'
+let role
 
 const waitingColor = '#ff8b55'
 const refusedColor = '#ff0000'
@@ -24,6 +26,7 @@ client.on('ready', () => {
       guild = fetchedGuild
       guild.members.fetch()
       channel = guild.channels.cache.get(channelId)
+      role = guild.roles.cache.get(roleId)
     })
 })
 
@@ -44,7 +47,6 @@ exports.printCandidature = (form) => {
   .setTimestamp()
   .addField("Age", form.age, true)
   .addField("Pseudo Discord", `<@${client.users.cache.find(u => u.tag === form.discordNickname).id}>`, true)
-  .addField("Adresse mail", form.email)
   .addField("Pseudo du/des Parrain(s)", form.godfathers === "" ? "Non Renseigné" : form.godfathers)
   .addField("Méthode de Découverte", form.foundOut === "" ? "Non Renseigné" : form.foundOut)
   .addField("Candidature", "⬇")
@@ -115,6 +117,7 @@ function acceptCandidature(message, embed, user) {
         Nous te conseillons aussi d'aller voir notre tutoriel sur nos ajouts à cette adresse : http://tuto.lapalmeraiemc.fr`)
       dmChannel.send(acceptedEmbed)
     })
+    candidate.roles.add(role)
   }
 
   embed.setColor(acceptedColor)
