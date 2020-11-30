@@ -1,7 +1,6 @@
 const form = document.getElementById("formulaireCandidature");
 const formMcNickname = document.getElementById("formMcNickname");
 const formDiscordNickname = document.getElementById("formDiscordNickname");
-const formEmail = document.getElementById("formEmail");
 const formAge = document.getElementById("formAge");
 const formGodfathers = document.getElementById("formGodfathers");
 const formFoundOut = document.getElementById("formFoundOut");
@@ -9,7 +8,6 @@ const formApply = document.getElementById("formApply");
 
 const regexMcNickname = RegExp("^[a-zA-Z0-9_]{1,16}$");
 const regexDiscordNickname = RegExp("^.{2,32}#[0-9]{4}$");
-const regexFormEmail = RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$");
 const regexFormAge = RegExp("^[0-9]{1,2}$");
 const regexGodfathers = RegExp("^[a-zA-Z0-9_]{1,16}( [a-zA-Z0-9_]{1,16}){0,2}$");
 
@@ -72,10 +70,6 @@ formDiscordNickname.addEventListener('focusout', (e) => {
   checkInputValidity(regexDiscordNickname, formDiscordNickname)
 });
 
-formEmail.addEventListener('focusout', (e) => {
-  checkInputValidity(regexFormEmail, formEmail)
-});
-
 formAge.addEventListener('focusout', (e) => {
   checkInputValidity(regexFormAge, formAge)
 });
@@ -98,13 +92,12 @@ form.addEventListener('submit', (e) => {
 
   const mcNicknameValidity = checkInputValidity(regexMcNickname, formMcNickname)
   const discordNicknameValidity = checkInputValidity(regexDiscordNickname, formDiscordNickname)
-  const emailValidity = checkInputValidity(regexFormEmail, formEmail)
   const ageValidity = checkInputValidity(regexFormAge, formAge)
   const godfathersValidity = checkGodfathersValidity()
   const foundOutValidity = checkFoundOutValidity()
   const applyValidity = setInputFieldValidity(formApply, formApply.value !== "" && formApply.value.length <= 2048)
 
-  if (mcNicknameValidity && discordNicknameValidity && emailValidity &&
+  if (mcNicknameValidity && discordNicknameValidity &&
     ageValidity && godfathersValidity && foundOutValidity && applyValidity) {
     grecaptcha.ready(function () {
       grecaptcha.execute('6Lf7IvEZAAAAAPzloUcoWk5DaaurFUmRsK7CVUtu', { action: 'submit' })
@@ -119,7 +112,6 @@ form.addEventListener('submit', (e) => {
             form: {
               mcNickname: formMcNickname.value,
               discordNickname: formDiscordNickname.value,
-              email: formEmail.value,
               age: formAge.value,
               godfathers: formGodfathers.value,
               foundOut: formFoundOut.value,
@@ -134,7 +126,6 @@ form.addEventListener('submit', (e) => {
           if (data.success) {
             setInputFieldValidity(formMcNickname, data.form.mcNickname)
             setInputFieldValidity(formDiscordNickname, data.form.discordNickname)
-            setInputFieldValidity(formEmail, data.form.email)
             setInputFieldValidity(formAge, data.form.age)
             setInputFieldValidity(formGodfathers, data.form.godfathers)
             setInputFieldValidity(formFoundOut, data.form.foundOut)
@@ -142,12 +133,12 @@ form.addEventListener('submit', (e) => {
 
             if (data.formValidity) {
               if (data.discordPresence) {
-                alert('the form has been successfully sent'); // TODO add a real message
+                alert('Le formulaire a bien été envoyé !'); // TODO add a real message
               } else {
-                alert('you are not on discord'); // TODO add a real message
+                alert("Vous n'avez pas rejoint le Discord."); // TODO add a real message
               }
             } else {
-              alert('there is invalid fields in your form'); // TODO add a real message
+              alert('Certains champs de texte sont invalides.'); // TODO add a real message
             }
           }
         });
