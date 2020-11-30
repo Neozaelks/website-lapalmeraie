@@ -29,11 +29,12 @@ h3, h4, h5{
 
 .slim{
   width: 5vw !important;
-  border: 0.5px solid #FA6C2C !important; 
+  border: 1px solid #FA6C2C !important; 
 }
 img{
   display: block;
 }
+
 
 code{
   color: #FA6C2C;
