@@ -37,16 +37,16 @@ app.get('/', (req, res) => {
   res.render('index', { currentPage: 'index' });
 });
 
-app.get('/sitesdevote', (req, res)  => {
-  res.render('sitesdevote', { currentPage: 'sitesdevote'});
+app.get('/votes', (req, res)  => {
+  res.render('votes', { currentPage: 'votes'});
 });
 
 app.get('/candidater', (req, res) => {
   res.render('candidater', { currentPage: 'candidater' });
 });
 
-app.get('/tutorial', (req, res) => {
-  res.render('tutorial', { currentPage: 'tutorial' });
+app.get('/tutoriel', (req, res) => {
+  res.render('tutoriel', { currentPage: 'tutoriel' });
 });
 
 app.post('/candidater', (req, res) => {

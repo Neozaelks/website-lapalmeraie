@@ -1,11 +1,11 @@
-/*Tutorial*/
+/*Tutoriel*/
 
-.headerTutorial{
-  background-image: url('/static/assets/header-bg-tutorial.png');
+.headerTutoriel{
+  background-image: url('/static/assets/header-bg-tutoriel.png');
   height: 75vh;
   background-size: cover;
 }
-.darkererTutorial{
+.darkererTutoriel{
   height: 75vh;
   background-size: cover;
   background-position: center;
@@ -13,7 +13,7 @@
   background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
-.headerTutorial div{
+.headerTutoriel div{
   margin: 0 !important;
   height: inherit;
   text-align: center;
