@@ -29,8 +29,13 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Enables verbose if not in production
+if (process.env.NODE_ENV !== 'production') app.enable('verbose errors');
+
+
 /////// DISCORD ///////
-botdiscord.start()
+// botdiscord.start()
+
 
 /////// ROUTES ///////
 app.get('/', (req, res) => {
@@ -89,6 +94,30 @@ app.post('/candidater', (req, res) => {
 });
 
 
+// Error Handling
+app.use((req, res, next) => {
+  res.status(404);
+
+  res.format({
+    html: function () {
+      res.render('404');
+    },
+    json: function () {
+      res.json({ error: 'Not found' });
+    },
+    default: function () {
+      res.type('txt').send('Not found');
+    }
+  });
+});
+
+app.use((err, req, res, next) => {
+  err.status = err.status || 500;
+  res.status(err.status);
+  res.render('error', { error: err });
+});
+
+
 // Start the app
 const server = app.listen(port, () => {
   console.log(`Website successfully started listening on port ${port}`);
@@ -106,5 +135,9 @@ function shutdown() {
   });
 }
 
+process.on('exit', () => shutdown());
 process.on('SIGINT', () => shutdown());
 process.on('SIGTERM', () => shutdown());
+process.on('SIGUSR1', () => shutdown());
+process.on('SIGUSR2', () => shutdown());
+process.on('uncaughtException', () => shutdown());
