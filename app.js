@@ -90,6 +90,21 @@ app.post('/candidater', (req, res) => {
 
 
 // Start the app
-app.listen(port, () => {
-  console.log(`Website started and is listening on port ${port}`);
+const server = app.listen(port, () => {
+  console.log(`Website successfully started listening on port ${port}`);
 });
+
+
+// Graceful Shutdown
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+function shutdown() {
+  console.log('Gracefully shutting down');
+  server.close(() => {
+    botdiscord.stop();
+    sleep(1000).then(() => process.exit(0));
+  });
+}
+
+process.on('SIGINT', () => shutdown());
+process.on('SIGTERM', () => shutdown());

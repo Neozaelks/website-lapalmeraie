@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
-require('dotenv').config();
+const path = require('path')
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const client = new Discord.Client({ partials: ['MESSAGE', 'REACTION'] })
 
@@ -16,8 +17,9 @@ const acceptedColor = '#00ff00'
 
 
 exports.start = () => {
-  client.login(process.env.BOT_TOKEN)
-  console.log("Sucessfully started")
+  client.login(process.env.BOT_TOKEN).then(() => {
+    console.log("Discord bot successfully started");
+  });
 }
 
 client.on('ready', () => {
@@ -32,7 +34,6 @@ client.on('ready', () => {
 
 exports.stop = () => {
   client.destroy()
-  console.log("Sucesfully killed. How dare you ?")
 }
 
 exports.isUserPresent = (userTag) => {
