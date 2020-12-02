@@ -138,3 +138,20 @@ input, textarea{
   color: rgb(255, 2, 2) !important;
 }
 
+
+/*SCROLLBAR*/
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #fa6c2c #272C30;
+}
+*::-webkit-scrollbar {
+  width: 12px;
+}
+*::-webkit-scrollbar-track {
+  background: #272C30;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #fa6c2c;
+  border-radius: 20px;
+  border: 3px solid #272C30;
+}

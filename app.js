@@ -34,7 +34,7 @@ if (process.env.NODE_ENV !== 'production') app.enable('verbose errors');
 
 
 /////// DISCORD ///////
-// botdiscord.start()
+botdiscord.start();
 
 
 /////// ROUTES ///////
