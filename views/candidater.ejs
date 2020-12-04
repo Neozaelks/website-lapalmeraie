@@ -22,7 +22,7 @@
       <div class="row text-center">
         <div class="col-12 d-flex align-items-center justify-content-center flex-wrap align-content-center">
           <h1 class="display-3 w-100">Rejoindre la Palmeraie</h1>
-          <p class="lead mt-3">Avant de pouvoir rejoindre La Palmeraie, nous avons besoin de quelques informations sur vous ! Ce formulaire nous permettra d'évaluer votre candidature, et de sécuriser le serveur.</p>
+          <p class="lead mt-3">Avant de pouvoir rejoindre La Palmeraie, nous avons besoin de quelques informations sur vous !<br>Ce formulaire nous permettra d'évaluer votre candidature, et de sécuriser le serveur.</p>
         </div>
       </div>
     </div>
@@ -56,13 +56,13 @@
         </div>
         <div class="col-lg-4 mt-lg-0 mt-4">
           <label for="">Comment avez-vous découvert la Palmeraie ?</label>
-          <input type="text" class="form-control" name="formFoundOut" id="formFoundOut">
+          <input type="text" class="form-control" name="formFoundOut" id="formFoundOut" maxlength="256">
         </div>
       </div>
       <div class="row mt-4 mt-lg-3">
         <div class="col-12">
           <label for="">Votre Candidature</label>
-          <textarea class="form-control" name="formApply" id="formApply"></textarea>
+          <textarea class="form-control" name="formApply" id="formApply" rows="5" maxlength="2048"></textarea>
           <small class="form-text text-muted">Qui êtes-vous ? Que comptez-vous faire sur le serveur ? Quels sont vos objectifs, vos ambitions ? Qu'est-ce qui vous attire sur le serveur ?</small>
         </div>
       </div>
@@ -82,6 +82,8 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   <script src="https://www.google.com/recaptcha/api.js?render=6Lf7IvEZAAAAAPzloUcoWk5DaaurFUmRsK7CVUtu"></script>
+  <script src="/static/js/maxlength.min.js"></script>
+  <script src="/static/js/autosize.min.js"></script>
   <script src="/static/js/validator.js"></script>
 </body>
 </html>

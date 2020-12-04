@@ -12,6 +12,16 @@ const regexFormAge = RegExp("^[0-9]{1,2}$");
 const regexGodfathers = RegExp("^[a-zA-Z0-9_]{1,16}( [a-zA-Z0-9_]{1,16}){0,2}$");
 
 
+$("#formApply, #formFoundOut").maxlength({
+  threshold: 50,
+  warningClass: "form-text text-warning mt-1",
+  limitReachedClass: "form-text text-danger mt-1",
+  placement: "bottom-right-inside"
+});
+
+autosize(formApply);
+
+
 function setInputFieldValidity(inputField, isValid) {
   if (isValid) {
     setInputFieldValid(inputField)
@@ -83,7 +93,8 @@ formFoundOut.addEventListener('focusout', (e) => {
 });
 
 formApply.addEventListener('focusout', (e) => {
-  setInputFieldValidity(formApply, formApply.value !== "" && formApply.value.length < 2048)
+  setInputFieldValidity(formApply, formApply.value !== "" && formApply.value.length <= 2048)
+  autosize.update(formApply)
 });
 
 
