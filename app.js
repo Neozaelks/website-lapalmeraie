@@ -42,6 +42,10 @@ app.get('/', (req, res) => {
   res.render('index', { currentPage: 'index' });
 });
 
+app.get('/donations', (req, res) => {
+  res.render('donations', { currentPage: 'donations' });
+})
+
 app.get('/votes', (req, res)  => {
   res.render('votes', { currentPage: 'votes'});
 });

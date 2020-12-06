@@ -60,6 +60,23 @@ exports.printCandidature = (form) => {
   })
 }
 
+exports.printDonation = (pseudo, montant) => {
+  const embed = new Discord.MessageEmbed()
+  .setTitle(`${pseudo} vient de cracher la thune`)
+  .setColor('#1da805')
+  .setThumbnail(`https://minotar.net/avatar/${pseudo}/128`)
+  .setTimestamp()
+  .addField("Montant de la donation :", `${montant} EUR`)
+  
+  channel.send(embed).then(msg => {
+    msg.react('💜')
+    .then(() => msg.react('💰'))
+    .then(() => msg.react('🤑'))
+    .then(() => msg.react('💸'))
+    .then(() => msg.react('💶'))
+  })
+}
+
 client.on('messageReactionAdd', async (reaction, user) => {
   if (reaction.message.channel.id === channelId && user.id !== client.user.id) {
     reaction.fetch().then(react => {
