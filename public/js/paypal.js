@@ -1,5 +1,4 @@
 function initPayPalButton() {
-  const botdiscord = require('../../botdiscord.js')
   var description = document.querySelector('#smart-button-container #description');
   var amount = document.querySelector('#smart-button-container #amount');
   var descriptionError = document.querySelector('#smart-button-container #descriptionError');
