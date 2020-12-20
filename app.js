@@ -54,6 +54,10 @@ app.get('/tutoriel', (req, res) => {
   res.render('tutoriel', { currentPage: 'tutoriel' });
 });
 
+app.get('/discord', (req, res) => {
+  res.redirect(301, 'https://discord.gg/C6Q62jR');
+});
+
 app.post('/candidater', (req, res) => {
   axios.post('https://www.google.com/recaptcha/api/siteverify', querystring.stringify({
     secret: process.env.RECAPTCHA_SECRET,
