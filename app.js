@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const botdiscord = require('./botdiscord.js')
 const axios = require('axios')
 const querystring = require('querystring');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const port = 3000;
 const app = express();
@@ -31,6 +32,30 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Enables verbose if not in production
 if (process.env.NODE_ENV !== 'production') app.enable('verbose errors');
+
+
+/////// PAYPAL ///////
+const getAccessToken = () => {
+  return new Promise((resolve, reject) => {
+    axios.post('https://api-m.sandbox.paypal.com/v1/oauth2/token', querystring.stringify({
+      grant_type: 'client_credentials'
+    }), {
+      headers: {
+        Accept: 'application/json',
+        'Accept-Language': 'fr_FR',
+        'Content-Type': 'application/json'
+      },
+      auth: {
+        username: process.env.PAYPAL_ID,
+        password: process.env.PAYPAL_SECRET
+      }
+    }).then(res => {
+      resolve(res.data.access_token)
+    }).catch(err => {
+      reject(err.response.data)
+    })
+  })
+}
 
 
 /////// DISCORD ///////
@@ -95,6 +120,56 @@ app.post('/candidater', (req, res) => {
       res.send({ success: false })
     }
   })
+});
+
+app.post('/create-donation', (req, res) => {
+  getAccessToken().then(accessToken => {
+    axios.post('https://api-m.sandbox.paypal.com/v2/checkout/orders', {
+      intent: 'CAPTURE',
+      purchase_units: [{
+        amount: {
+          currency_code: 'EUR',
+          value: req.body.amount
+        },
+        payment_instruction: {
+          disbursement_mode: 'INSTANT'
+        }
+      }]
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`
+      }
+    }).then(response => {
+      res.json({ id: response.data.id })
+    }).catch(error => {
+      console.log(error.response.data)
+      res.sendStatus(500)
+    });
+  }).catch(error => {
+    console.error(error)
+    res.sendStatus(500)
+  });
+});
+
+app.post('/capture-donation/:id', (req, res) => {
+  const orderId = req.params.id;
+  getAccessToken().then(accessToken => {
+    axios.post(`https://api-m.sandbox.paypal.com/v2/checkout/orders/${orderId}/capture`, {}, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`
+      }
+    }).then(response => {
+      res.json({ status: 'success' })
+    }).catch(error => {
+      console.log(error.response.data)
+      res.sendStatus(500)
+    });
+  }).catch(error => {
+    console.error(error)
+    res.sendStatus(500)
+  });
 });
 
 
